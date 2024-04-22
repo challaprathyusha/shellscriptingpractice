@@ -32,10 +32,10 @@ fi
 dnf install mysql-server -y &>>$LOG_FILE
 validate $? "Installation of mysql"
 
-systemctl enable mysqld -y &>>$LOG_FILE
+systemctl enable mysqld &>>$LOG_FILE
 validate $? "Enabling of mysql"
 
-systemctl start mysqld -y &>>$LOG_FILE
+systemctl start mysqld  &>>$LOG_FILE
 validate $? "starting of mysql"
 
 mysql -h db.expensesnote.site -uroot -p$PASSWORD -e "show databases;" &>>$LOG_FILE
