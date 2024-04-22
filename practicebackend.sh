@@ -68,7 +68,7 @@ validate $? "Installation of dependencies of the application is"
 cp /home/ec2-user/shellscriptingpractice/backend.service  /etc/systemd/system/backend.service &>>$LOG_FILE
 validate $? "copying of service file to the etc folder is"
 
-system daemon-reload &>>$LOG_FILE
+systemctl daemon-reload &>>$LOG_FILE
 validate $? "daemon reload is"
 
 systemctl enable backend &>>$LOG_FILE
