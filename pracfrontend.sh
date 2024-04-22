@@ -38,14 +38,15 @@ validate $? "enabling of nginx is"
 systemctl start nginx &>>$LOG_FILE
 validate $? "starting of nginx is"
 
-cd /usr/bin/nginx/html
-rm -rf /usr/bin/nginx/html/* &>>$LOG_FILE
+cd /usr/share/nginx/html &>>$LOG_FILE
+rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE
 validate $? "Downloading of frontend code is"
 
-cd /usr/bin/nginx/html
+cd /usr/share/nginx/html &>>$LOG_FILE
 unzip /tmp/frontend.zip &>>$LOG_FILE
+validate $? "Extraction of frontend code is"
 
 
 cp /home/ec2-user/shellscriptingpractice/pracexpense.config  /etc/nginx/default.d/expense.conf &>>$LOG_FILE
