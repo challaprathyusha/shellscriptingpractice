@@ -40,8 +40,8 @@ validate $? "enabling nodejs:20 is"
 dnf install nodejs -y &>>$LOG_FILE
 validate $? "installation of nodejs:20 is"
 
-id expense
-if[ $? -ne 0 ]
+id expense &>>$LOG_FILE
+if [ $? -ne 0 ]
 then
     useradd expense &>>$LOG_FILE
     validate $? "expense user creation is"
